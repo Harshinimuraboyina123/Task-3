@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined Projects</title>
+  <style>
+    /* Common styles */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    section {
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    h1, h2 {
+      color: #2d6a4f;
+    }
+    
+    button {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    /* EcoTrack Styles */
+    .ecotrack {
+      background-color: #eafaf1;
+      color: #1b4332;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .ecotrack header {
+      background-color: #2d6a4f;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    .ecotrack main {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .ecotrack .calculator {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    .ecotrack label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    
+    .ecotrack input {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    
+    .ecotrack button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #40916c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    
+    .ecotrack button:hover {
+      background-color: #1b4332;
+    }
+    
+    .ecotrack #result {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .ecotrack footer {
+      background-color: #2d6a4f;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    /* QuizWhiz Styles */
+    .quizwhiz {
+      background: linear-gradient(135deg, #b3ffab 0%, #12fff7 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .quizwhiz .container {
+      max-width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    
+    .quizwhiz .quiz-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 2rem;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
+      margin: auto;
+      text-align: center;
+    }
+    
+    .quizwhiz h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #fff;
+    }
+    
+    .quizwhiz #question-box {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .quizwhiz .btn-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .quizwhiz button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00b4d8;
+      color: white;
+      font-size: 1rem;
+    }
+    
+    .quizwhiz button:hover {
+      background-color: #0077b6;
+    }
+    
+    .quizwhiz .next-btn {
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .quizwhiz .result {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    
+    /* Carousel Styles */
+    .carousel-section {
+      background: #e3f2fd;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .carousel-container {
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+      text-align: center;
+    }
+    
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .carousel-image {
+      display: none;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    
+    .carousel-image.active {
+      display: block;
+    }
+    
+    .carousel .buttons {
+      margin-top: 1rem;
+    }
+    
+    .carousel button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .carousel button:hover {
+      background-color: #1565c0;
+    }
+    
+    /* Joke API Styles */
+    .joke-api {
+      background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+    
+    .joke-api #joke-container {
+      background: #0077b6;
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .joke-api button {
+      margin-top: 1.5rem;
+      background: #00b4d8;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+    }
+    
+    .joke-api button:hover {
+      background: #023e8a;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .ecotrack main {
+        padding: 1rem;
+      }
+      
+      .ecotrack .calculator {
+        padding: 1.5rem;
+      }
+      
+      .ecotrack h1 {
+        font-size: 1.8rem;
+      }
+      
+      .ecotrack input, .ecotrack button {
+        font-size: 1rem;
+      }
+      
+      .quizwhiz .quiz-box {
+        padding: 1.2rem;
+      }
+      
+      .quizwhiz h1 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .ecotrack .calculator {
+        border-radius: 10px;
+        padding: 1rem;
+      }
+      
+      .ecotrack button {
+        padding: 0.6rem;
+      }
+      
+      .ecotrack h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- EcoTrack Project -->
+  <section class="ecotrack">
+    <header>
+      <h1>🌍 EcoTrack</h1>
+      <p>Track your daily carbon footprint</p>
+    </header>
+
+    <main>
+      <section class="calculator">
+        <h2>Carbon Calculator</h2>
+        <label for="travel">Travel (km):</label>
+        <input type="number" id="travel" placeholder="e.g., 20">
+
+        <label for="electricity">Electricity (kWh):</label>
+        <input type="number" id="electricity" placeholder="e.g., 5">
+
+        <button onclick="calculateCarbon()">Calculate</button>
+
+        <div id="result"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 EcoTrack. Go Green 💚</p>
+    </footer>
+  </section>
+
+  <!-- QuizWhiz Project -->
+  <section class="quizwhiz">
+    <div class="container">
+      <div class="quiz-box">
+        <h1>🎓 QuizWhiz</h1>
+        <div id="question-box"></div>
+        <div id="answers" class="btn-grid"></div>
+        <button id="next-btn" class="next-btn">Next</button>
+        <div id="result" class="result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel Project -->
+  <section class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel">
+        <img src="nainoa-shizuru-NcdG9mK3PBY-unsplash.jpg" alt="Image 1" class="carousel-image active">
+        <img src="wes-hicks-MEL-jJnm7RQ-unsplash.jpg" alt="Image 2" class="carousel-image">
+        <img src="alireza-attari-mp_FNJYcjBM-unsplash.jpg" alt="Image 3" class="carousel-image">
+      </div>
+      <div class="buttons">
+        <button id="prevBtn">❮ Prev</button>
+        <button id="nextBtn">Next ❯</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Joke API Project -->
+  <section class="joke-api">
+    <div id="joke-container">
+      <h2>Random Joke</h2>
+      <p id="setup">Loading joke...</p>
+      <p id="punchline" style="font-weight: bold; margin-top: 1rem;"></p>
+      <button id="new-joke-btn">Get Another Joke</button>
+    </div>
+  </section>
+
+  <script>
+    // EcoTrack Script
+    function calculateCarbon() {
+      const travel = parseFloat(document.getElementById("travel").value) || 0;
+      const electricity = parseFloat(document.getElementById("electricity").value) || 0;
+
+      // Simple emission factors (approximate)
+      const travelEmissions = travel * 0.12; // kg CO2 per km
+      const electricityEmissions = electricity * 0.43; // kg CO2 per kWh
+
+      const total = travelEmissions + electricityEmissions;
+
+      document.getElementById("result").innerHTML = 
+        `🌿 You emitted <strong>${total.toFixed(2)} kg CO₂</strong> today.`;
+    }
+
+    // QuizWhiz Script
+    const questions = [
+      // 🌍 General Knowledge
+      {
+        question: "Which planet is known as the Red Planet?",
+        answers: [
+          { text: "Mars", correct: true },
+          { text: "Jupiter", correct: false },
+          { text: "Venus", correct: false }
+        ]
+      },
+      {
+        question: "What is the capital city of Canada?",
+        answers: [
+          { text: "Toronto", correct: false },
+          { text: "Vancouver", correct: false },
+          { text: "Ottawa", correct: true }
+        ]
+      },
+      {
+        question: "Who invented the light bulb?",
+        answers: [
+          { text: "Thomas Edison", correct: true },
+          { text: "Alexander Graham Bell", correct: false },
+          { text: "Isaac Newton", correct: false }
+        ]
+      },
+      // 🕉️ Indian Mythology
+      {
+        question: "Who was the son of Arjuna in the Mahabharata?",
+        answers: [
+          { text: "Abhimanyu", correct: true },
+          { text: "Bhishma", correct: false },
+          { text: "Duryodhana", correct: false }
+        ]
+      },
+      {
+        question: "Who wrote the Ramayana?",
+        answers: [
+          { text: "Valmiki", correct: true },
+          { text: "Vyasa", correct: false },
+          { text: "Kalidasa", correct: false }
+        ]
+      },
+      {
+        question: "Who was the father of Lord Krishna?",
+        answers: [
+          { text: "Nanda", correct: true },
+          { text: "Vasudeva", correct: false },
+          { text: "Dasharatha", correct: false }
+        ]
+      },
+      {
+        question: "What weapon did Lord Vishnu use?",
+        answers: [
+          { text: "Trishul", correct: false },
+          { text: "Sudarshan Chakra", correct: true },
+          { text: "Brahmastra", correct: false }
+        ]
+      },
+      {
+        question: "Who killed Ravana in the Ramayana?",
+        answers: [
+          { text: "Lord Hanuman", correct: false },
+          { text: "Lord Rama", correct: true },
+          { text: "Lakshmana", correct: false }
+        ]
+      },
+      // 🏅 Sports
+      {
+        question: "Which country won the FIFA World Cup in 2022?",
+        answers: [
+          { text: "Argentina", correct: true },
+          { text: "France", correct: false },
+          { text: "Brazil", correct: false }
+        ]
+      },
+      {
+        question: "Who is known as the 'God of Cricket'?",
+        answers: [
+          { text: "Virat Kohli", correct: false },
+          { text: "Sachin Tendulkar", correct: true },
+          { text: "MS Dhoni", correct: false }
+        ]
+      },
+      {
+        question: "In which sport is the term 'Love' used?",
+        answers: [
+          { text: "Football", correct: false },
+          { text: "Tennis", correct: true },
+          { text: "Cricket", correct: false }
+        ]
+      },
+      {
+        question: "Which athlete has won the most Olympic gold medals?",
+        answers: [
+          { text: "Usain Bolt", correct: false },
+          { text: "Michael Phelps", correct: true },
+          { text: "Carl Lewis", correct: false }
+        ]
+      },
+      {
+        question: "Which sport is associated with Wimbledon?",
+        answers: [
+          { text: "Badminton", correct: false },
+          { text: "Tennis", correct: true },
+          { text: "Golf", correct: false }
+        ]
+      },
+      // 🎯 Bonus General
+      {
+        question: "Which Indian city is known as the 'Pink City'?",
+        answers: [
+          { text: "Jaipur", correct: true },
+          { text: "Jodhpur", correct: false },
+          { text: "Udaipur", correct: false }
+        ]
+      }
+    ];
+
+    const questionElement = document.getElementById("question-box");
+    const answerButtons = document.getElementById("answers");
+    const nextButton = document.getElementById("next-btn");
+    const resultElement = document.getElementById("result");
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function startQuiz() {
+      currentQuestionIndex = 0;
+      score = 0;
+      nextButton.innerText = "Next";
+      resultElement.innerText = "";
+      showQuestion();
+    }
+
+    function showQuestion() {
+      resetState();
+      let currentQuestion = questions[currentQuestionIndex];
+      questionElement.innerText = currentQuestion.question;
+
+      currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerText = answer.text;
+        button.classList.add("btn");
+        if (answer.correct) {
+          button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click", selectAnswer);
+        answerButtons.appendChild(button);
+      });
+    }
+
+    function resetState() {
+      nextButton.style.display = "none";
+      while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+      }
+    }
+
+    function selectAnswer(e) {
+      const selectedBtn = e.target;
+      const isCorrect = selectedBtn.dataset.correct === "true";
+      if (isCorrect) {
+        selectedBtn.classList.add("correct");
+        score++;
+      } else {
+        selectedBtn.classList.add("incorrect");
+      }
+
+      Array.from(answerButtons.children).forEach(button => {
+        if (button.dataset.correct === "true") {
+          button.classList.add("correct");
+        }
+        button.disabled = true;
+      });
+
+      nextButton.style.display = "block";
+    }
+
+    function showScore() {
+      resetState();
+      questionElement.innerText = `🎉 You scored ${score} out of ${questions.length}!`;
+      resultElement.innerText =
+        score === questions.length
+          ? "💯 Perfect!"
+          : score >= 10
+          ? "🏆 Great Job!"
+          : score >= 7
+          ? "👍 Good Effort!"
+          : "😅 Keep Practicing!";
+      nextButton.innerText = "Play Again";
+      nextButton.style.display = "block";
+    }
+
+    function handleNextButton() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    }
+
+    nextButton.addEventListener("click", () => {
+      if (currentQuestionIndex < questions.length) {
+        handleNextButton();
+      } else {
+        startQuiz();
+      }
+    });
+
+    startQuiz();
+
+    // Carousel Script
+    const images = document.querySelectorAll('.carousel-image');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) {
+          img.classList.add('active');
+        }
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
+
+    // Start with the first image visible
+    showImage(currentIndex);
+
+    // Joke API Script
+    async function fetchJoke() {
+      const setupElem = document.getElementById('setup');
+      const punchlineElem = document.getElementById('punchline');
+      
+      setupElem.textContent = "Loading joke...";
+      punchlineElem.textContent = "";
+      
+      try {
+        const response = await fetch('https://official-joke-api.appspot.com/random_joke');
+        const data = await response.json();
+        
+        setupElem.textContent = data.setup;
+        
+        // Show punchline after 2 seconds delay for effect
+        setTimeout(() => {
+          punchlineElem.textContent = data.punchline;
+        }, 2000);
+        
+      } catch (error) {
+        setupElem.textContent = "Oops! Couldn't fetch a joke right now.";
+        punchlineElem.textContent = "";
+        console.error('Error fetching joke:', error);
+      }
+    }
+    
+    document.getElementById('new-joke-btn').addEventListener('click', fetchJoke);
+    
+    // Fetch initial joke on page load
+    fetchJoke();
+  </script>
+</body>
+</html>
